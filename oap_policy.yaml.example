@@ -1,0 +1,23 @@
+# Example OAP Policy for Agno agents
+version: "1.0"
+agent: "example-agent"
+
+tools:
+  allowed:
+    - name: "web_search"
+      max_calls_per_session: 20
+    - name: "read_file"
+      paths:
+        - "./data/**"
+        - "./docs/**"
+    - name: "calculator"
+  denied:
+    - "bash"
+    - "shell"
+    - "delete_file"
+    - "execute_*"
+    - "write_file"
+
+audit:
+  receipts: true
+  destination: "./oap-receipts/"
